@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE_CONFIG } from '@/lib/config'
+import { SITE } from '@/lib/config'
 import { getT, type Locale } from '@/lib/i18n'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -10,12 +10,18 @@ type Props = { children: React.ReactNode; params: { locale: Locale } }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
-    title: `${SITE_CONFIG.name} — ${SITE_CONFIG.tagline[params.locale]}`,
-    description: SITE_CONFIG.description[params.locale],
-    alternates: { canonical: `${SITE_CONFIG.url}/${params.locale}`, languages: { 'en': `${SITE_CONFIG.url}/en`, 'fr': `${SITE_CONFIG.url}/fr` } },
+    title: `${SITE.name} -- ${SITE.tagline[params.locale]}`,
+    description: SITE.desc[params.locale],
+    alternates: {
+      canonical: `${SITE.url}/${params.locale}`,
+      languages: { en: `${SITE.url}/en`, fr: `${SITE.url}/fr` },
+    },
   }
 }
-export function generateStaticParams() { return [{ locale: 'en' }, { locale: 'fr' }] }
+
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'fr' }]
+}
 
 export default function LocaleLayout({ children, params }: Props) {
   return (
