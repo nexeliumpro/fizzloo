@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { font-family: 'Nunito', system-ui, sans-serif; background: #fff; color: #1a2744; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #f0f7ff; } ::-webkit-scrollbar-thumb { background: #7cc2ff; border-radius: 99px; }
+.bubble-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.bubble { position: absolute; bottom: -80px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(124,194,255,0.35), rgba(13,135,233,0.1)); animation: bubbleUp linear infinite; }
+.hero-gradient { background: linear-gradient(135deg, #e8f4fd 0%, #d6eaff 40%, #f0f7ff 100%); }
+.glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.9); }
+.product-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(13,135,233,0.18); }
+.star { color: #FFD93D; }
+.badge-bestseller { background: linear-gradient(135deg, #FF6B6B, #ff8e53); color: white; font-weight: 800; font-size: 0.7rem; padding: 3px 10px; border-radius: 99px; letter-spacing: 0.05em; text-transform: uppercase; }
+.btn-primary { background: linear-gradient(135deg, #0d87e9, #0069c7); color: white; font-weight: 800; border-radius: 16px; box-shadow: 0 4px 16px rgba(13,135,233,0.35); transition: all 0.25s ease; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,135,233,0.5); }
+.navbar { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid #e0f0ff; }
+.accordion-item { border-bottom: 1px solid #e0f0ff; }
+.accordion-trigger { width: 100%; text-align: left; padding: 16px 0; background: none; border: none; cursor: pointer; font-weight: 700; font-size: 0.95rem; color: #1a2744; display: flex; justify-content: space-between; align-items: center; }
+.qty-btn { width: 36px; height: 36px; border-radius: 50%; background: #e8f4fd; border: 2px solid #b9ddff; display: flex; align-items: center; justify-content: center; font-weight: 800; cursor: pointer; transition: background 0.2s; }
+.qty-btn:hover { background: #b9ddff; }
+.payment-icons { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.payment-icon { height: 28px; padding: 4px 8px; border-radius: 6px; background: white; border: 1px solid #e0f0ff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: #1a2744; }
