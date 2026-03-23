@@ -1,21 +1,27 @@
 import Link from 'next/link'
 import { type Locale, getT } from '@/lib/i18n'
+
 type Props = { params: { locale: Locale } }
+
 const POSTS = [
-  { slug: 'bath-time-routine-kids', emoji: '🛁', date: 'March
-15, 2025', readTime: '4 min', color: '#d6eaff',
+  { slug: 'bath-time-routine-kids', emoji: '🛁', date: 'March 15, 2025', readTime: '4 min', color: '#d6eaff',
     title: { en: '5 Tips to Make Bath Time Fun for Kids', fr: '5 conseils pour rendre le bain amusant' },
-    excerpt: { en: 'Bath time struggles are real. Here are 5 proven strategies.', fr: 'La routine du bain peut devenir magique. Voici 5 strategies.' },
+    excerpt: { en: 'Bath time struggles are real. Here are 5 proven strategies to transform your routine.', fr: 'La routine du bain peut devenir un moment magique. Voici 5 strategies prouvees.' },
     category: { en: 'Parenting Tips', fr: 'Conseils Parents' } },
   { slug: 'natural-bath-products-children', emoji: '🌿', date: 'March 8, 2025', readTime: '6 min', color: '#d6f5ee',
     title: { en: 'Why Natural Bath Products Matter', fr: 'Pourquoi les produits naturels sont essentiels' },
-    excerpt: { en: 'Natural ingredients are best for sensitive skin.', fr: 'Les ingredients naturels protegent la peau sensible.' },
+    excerpt: { en: 'Natural ingredients are best for sensitive skin. Here is why they matter.', fr: 'Les ingredients naturels protegent la peau sensible de vos enfants.' },
     category: { en: 'Health', fr: 'Sante' } },
   { slug: 'sensory-play-bath-time', emoji: '🌈', date: 'March 1, 2025', readTime: '5 min', color: '#fde8f0',
     title: { en: 'Sensory Play During Bath Time', fr: 'Jeu sensoriel pendant le bain' },
-    excerpt: { en: 'Bath time is perfect for sensory exploration.', fr: 'Le bain est ideal pour stimuler les sens.' },
+    excerpt: { en: 'Bath time is perfect for sensory exploration and brain development.', fr: 'Le bain est ideal pour stimuler les sens et le developpement cognitif.' },
     category: { en: 'Development', fr: 'Developpement' } },
+  { slug: 'perfect-bedtime-routine', emoji: '🌙', date: 'February 22, 2025', readTime: '7 min', color: '#ede8fd',
+    title: { en: 'Bedtime Routine for Better Sleep', fr: 'Routine du soir pour mieux dormir' },
+    excerpt: { en: 'A warm bath before bed significantly improves sleep quality in children.', fr: 'Un bain chaud le soir favorise un meilleur sommeil chez les enfants.' },
+    category: { en: 'Sleep', fr: 'Sommeil' } },
 ]
+
 export default function BlogPage({ params: { locale } }: Props) {
   const tr = getT(locale)
   return (
@@ -31,8 +37,7 @@ export default function BlogPage({ params: { locale } }: Props) {
           {POSTS.map((post, i) => (
             <Link key={i} href={`/${locale}/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-card border border-slate-100 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
               <div className="aspect-video flex items-center justify-center text-6xl" style={{ background: `linear-gradient(135deg, ${post.color}60, ${post.color}cc)` }}>
-                <span role="img" aria-label={post.title[locale]}>{post.emoji
-}</span>
+                <span role="img" aria-label={post.title[locale]}>{post.emoji}</span>
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between mb-3">
