@@ -1,6 +1,8 @@
 import FAQSection from '@/components/sections/FAQSection'
 import { type Locale, getT } from '@/lib/i18n'
+
 type Props = { params: { locale: Locale } }
+
 export default function FAQPage({ params: { locale } }: Props) {
   const tr = getT(locale)
   return (
