@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useCart } from '@/components/ui/CartProvider'
 import { PRODUCTS } from '@/lib/config'
 import { getT, type Locale } from '@/lib/i18n'
-const EMOJI_MAP: Record<string, string> = { tub: '🛁', gift: '🎁', star: '', trophy: '🏆', gem: '💎' }
+const EMOJI_MAP: Record<string, string> = { tub: 'ð', gift: 'ð', star: '', trophy: 'ð', gem: 'ð' }
 export default function ConversionPopup({ locale }: { locale: Locale }) {
   const [visible, setVisible] = useState(false)
   const { addItem } = useCart()
@@ -23,7 +23,7 @@ export default function ConversionPopup({ locale }: { locale: Locale }) {
       <div className="fixed inset-0 bg-black/30 z-50 backdrop-blur-sm" onClick={dismiss} />
       <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-80 bg-white rounded-3xl shadow-2xl overflow-hidden border border-blue-100">
         <div className="bg-gradient-to-r from-brand-500 to-brand-600 p-4 flex items-center justify-between">
-          <div><p className="text-white font-bold text-sm">{llocale === 'fr' ? 'Offre speciale !' : 'Special offer!'}</p></div>
+          <div><p className="text-white font-bold text-sm">{locale === 'fr' ? 'Offre speciale !' : 'Special offer!'}</p></div>
           <button onClick={dismiss} className="text-white text-lg font-bold w-7 h-7">x</button>
         </div>
         <div className="p-4">
