@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { useParams } from 'next/navigation'
 
 export type CartItem = {
   id: string; name: string; price: number; qty: number; pieces: number; emoji: string
@@ -22,6 +23,9 @@ export function useCart() {
 export default function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const [open, setOpen] = useState(false)
+  const [checkingOut, setCheckingOut] = useState(false)
+  const params = useParams()
+  const locale = (params?.locale as string) || 'en'
 
   const addItem = useCallback((item: Omit<CartItem,'qty'>) => {
     setItems(prev => {
@@ -39,6 +43,21 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     setItems(prev => prev.map(i => i.id === id ? { ...i, qty } : i))
   }, [removeItem])
 
+  const handleCheckout = async () => {
+    setCheckingOut(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items, locale }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch (e) {
+      setCheckingOut(false)
+    }
+  }
+
   const totalItems = items.reduce((s, i) => s + i.qty, 0)
   const totalPrice = items.reduce((s, i) => s + i.price * i.qty, 0)
 
@@ -51,14 +70,14 @@ export default function CartProvider({ children }: { children: ReactNode }) {
           <div className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white z-50 shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-5 border-b border-slate-100">
               <h2 className="font-bold text-lg">
-                <span role="img" aria-label="cart">🛒</span> Cart ({totalItems})
+                <span role="img" aria-label="cart">ð</span> Cart ({totalItems})
               </h2>
               <button onClick={() => setOpen(false)} className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold">x</button>
             </div>
             <div className="flex-1 overflow-y-auto p-5 space-y-4">
               {items.length === 0 ? (
                 <div className="text-center py-16 text-slate-400">
-                  <div className="text-5xl mb-4" role="img" aria-label="bath">🛁</div>
+                  <div className="text-5xl mb-4" role="img" aria-label="bath">ð</div>
                   <p className="font-semibold">Your cart is empty</p>
                 </div>
               ) : items.map(item => (
@@ -87,8 +106,8 @@ export default function CartProvider({ children }: { children: ReactNode }) {
                   <span className="text-brand-600">{totalPrice.toFixed(2)} EUR</span>
                 </div>
                 <p className="text-xs text-center text-slate-400">Free shipping included</p>
-                <button className="btn-primary w-full py-4 text-base font-bold rounded-2xl flex items-center justify-center gap-2">
-                  Checkout -- {totalPrice.toFixed(2)} EUR
+                <button onClick={handleCheckout} disabled={checkingOut} className="btn-primary w-full py-4 text-base font-bold rounded-2xl flex items-center justify-center gap-2">
+                  {checkingOut ? 'Redirection...' : `Checkout -- ${totalPrice.toFixed(2)} EUR`}
                 </button>
               </div>
             )}
