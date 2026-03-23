@@ -13,7 +13,6 @@ type CartCtx = {
 }
 
 const CartContext = createContext<CartCtx | null>(null)
-
 export function useCart() {
   const ctx = useContext(CartContext)
   if (!ctx) throw new Error('useCart must be inside CartProvider')
@@ -64,15 +63,14 @@ export default function CartProvider({ children }: { children: ReactNode }) {
                 </div>
               ) : items.map(item => (
                 <div key={item.id} className="flex gap-3 p-3 rounded-2xl bg-blue-50">
-                  <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-2xl flex-shrink-0" role="img" aria-label={item.name}>{item.emoji
-}</div>
+                  <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-2xl flex-shrink-0" role="img" aria-label={item.name}>{item.emoji}</div>
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-sm truncate">{item.name}</p>
                     <p className="text-xs text-slate-500">{item.pieces} bombs</p>
                     <div className="flex items-center gap-2 mt-2">
                       <button className="qty-btn w-7 h-7 text-sm" onClick={() => updateQty(item.id, item.qty - 1)}>-</button>
                       <span className="font-bold text-sm w-5 text-center">{item.qty}</span>
-                      <button className="qty-btn w-7 h-7 text-sm" onClick={() => updateQty(item.id, item.qty + 1)}>+3/button>
+                      <button className="qty-btn w-7 h-7 text-sm" onClick={() => updateQty(item.id, item.qty + 1)}>+</button>
                     </div>
                   </div>
                   <div className="flex flex-col items-end justify-between">
