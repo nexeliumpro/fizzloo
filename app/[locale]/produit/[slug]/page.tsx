@@ -13,8 +13,8 @@ export default function ProductPage() {
   const slug = params.slug as string
   const tr = getT(locale)
   const { addItem } = useCart()
-  const product = PRODUCTQ.find(p => p.slug === slug) ?? PRODUCTS[2]
-  const related = PRODUCTQ.filter(p => p.id !== product.id).slice(0, 3)
+  const product = PRODUCTS.find(p => p.slug === slug) ?? PRODUCTS[2]
+  const related = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3)
   const price = product.salePrice ?? product.regularPrice
   const saving = product.salePrice ? Math.round((1 - product.salePrice / product.regularPrice) * 100) : null
   const emoji = EMOJI_MAP[product.emoji] ?? product.emoji
@@ -74,43 +74,3 @@ export default function ProductPage() {
                 <div key={i} className="text-center text-xs font-semibold text-slate-500 p-2 rounded-xl bg-blue-50">{b.label}</div>
               ))}
             </div>
-            <div className="accordion-item">
-              <button className="accordion-trigger" onClick={() => setShippingOpen(!shippingOpen)}>
-                <span>{locale === 'fr' ? 'Livraison et retour' : 'Shipping & Returns'}</span>
-                <span className={`text-brand-400 transition-transform duration-200 ${shippingOpen ? 'rotate-180' : ''}`}>v</span>
-              </button>
-              {shippingOpen && (
-                <div className="pb-4">
-                  <div className="rounded-2xl overflow-hidden border border-blue-100">
-                    {SHIPPING_ZONES.map((z, i) => (
-                      <div key={i} className={`grid grid-cols-3 text-xs p-3 gap-2 ${i % 2 === 0 ? 'bg-blue-50' : 'bg-white'}`}>
-                        <div className="font-bold text-slate-700">{z.zone[locale]}</div>
-                        <div className="text-slate-500">{z.standard[locale]}</div>
-                        <div className="text-slate-500">{z.express[locale]}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            {FAQ_ITEMS.slice(0, 4).map((item, i) => (
-              <div key={i} className="accordion-item">
-                <button className="accordion-trigger" onClick={() => setFaqOpen(faqOpen === i ? null : i)}>
-                  <span>{item.q[locale]}</span>
-                  <span className={`text-brand-400 transition-transform duration-200 ${faqOpen === i ? 'rotate-180' : ''}`}>v</span>
-                </button>
-                {faqOpen === i && <div className="pb-4 text-sm text-slate-500 leading-relaxed">{item.a[locale]}</div>}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mt-24">
-          <h2 className="font-bold text-3xl text-slate-800 mb-8 text-center">{locale === 'fr' ? 'Vous aimerez aussi' : 'You might also like'}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {related.map(p => <ProductCard key={p.id} product={p} locale={locale} />)}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
