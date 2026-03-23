@@ -9,6 +9,7 @@ import ConversionPopup from '@/components/ui/ConversionPopup'
 type Props = { children: React.ReactNode; params: { locale: Locale } }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const tr = getT(params.locale)
   return {
     title: `${SITE.name} -- ${SITE.tagline[params.locale]}`,
     description: SITE.desc[params.locale],
