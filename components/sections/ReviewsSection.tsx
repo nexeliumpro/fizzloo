@@ -1,6 +1,5 @@
 import { REVIEWS } from '@/lib/config'
 import { getT, type Locale } from '@/lib/i18n'
-
 export default function ReviewsSection({ locale }: { locale: Locale }) {
   const tr = getT(locale)
   return (
@@ -18,11 +17,8 @@ export default function ReviewsSection({ locale }: { locale: Locale }) {
               <p className="text-slate-700 text-sm leading-relaxed mb-4">{review.text[locale]}</p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w9 h-9 rounded-full bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center text-white font-bold text-sm">{review.name[0]}</div>
-                  <div>
-                    <p className="font-bold text-sm text-slate-800">{review.name}</p>
-                    <p className="text-xs text-slate-400">{review.location}</p>
-                  </div>
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center text-white font-bold text-sm">{review.name[0]}</div>
+                  <div><p className="font-bold text-sm text-slate-800">{review.name}</p><p className="text-xs text-slate-400">{review.location}</p></div>
                 </div>
                 {review.verified && <span className="text-xs font-bold text-brand-500 bg-blue-50 px-2 py-1 rounded-full">Verified</span>}
               </div>
