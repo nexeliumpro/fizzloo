@@ -19,7 +19,7 @@ export default function FAQSection({ locale }: { locale: Locale }) {
                 <span>{item.q[locale]}</span>
                 <span className={`text-brand-500 text-xl transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}>v</span>
               </button>
-              {open === i && (<div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed">{item.a[locale]}</div>)}
+              {open === i && <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed">{item.a[locale]}</div>}
             </div>
           ))}
         </div>
