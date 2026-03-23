@@ -87,8 +87,129 @@ export const PRODUCTS = [
 ] as const
 
 export type Product = typeof PRODUCTS[number]
-export const REVIEWS = [{name:'Sophie M.',location:'Paris, France',rating:5,date:'March
-12, 2025',product:'Pack Famille -- 12 Bombes',verified:true,text:{ en:'My daughter loves them! Best purchase of the year!',fr:'Ma fille les adore ! Meilleur achat de l\'annee !'}},{name:'James T.',location:'London, UK',rating:5,date:'March 8, 2025',product:'Starter Pack -- 3 Bombs',verified:true,text:{ en:'The kids love these!',fr:'Les enfants deviennent fous !'}},{name:'Emma L.',location:'Montreal, Canada',rating:5,date:'Feb 28, 2025'product:'Luxury Box -- 24 Bombs',verified:true,text:{ en:'Beautiful packaging!',fr:'Emballage superbe !'}},{name:'Lisa K.',location:'New York, USA',rating:5,date:'March 15, 2025',product:'Family Pack -- 12 Bombs',verified:true,text:{ en:'10/10!',fr:'10/10 !'}}]
-export const FAQ_ITEMS = [{q:{en:'Are the bath bombs safe?',fr:'Les bombes sont-elles sures ?'},a:{en:'Yes! 100% natural. Safe for ages 3+.',fr:'Oui ! 100% naturels. Sures des 3 ans.'}},{q:{ en:'What toys are inside?',2fr:'Quels jouets ?'},a:{en:'Animals, dinos, sea creatures and more!',fr:'Animaux, dinos, creatures marines et plus !'}},{q:{ en:'How long does delivery take?',fr:'Combien de temps ?'},a:{ en:'Standard: 5-14 days free. Express: 3-7 days EUR 4.99.',fr:'Standard : 5-14 jours gratuit. Express : 3-7 jours 4,99 EUR.'}},{q:{ en:'Return policy?',fr:'Politique de retour ?'},a:{en:'30-day guarantee.',fr:'Garantie 30 jours.'}},{q:{ en:'Do bombs stain the tub?',fr:'Tachent-elles la baignoire ?'},a:{en:'No! Natural colorants.',fr:'Non ! Colorants naturels.'}}]
-export const SHIPPING_ZONES = [{zone:{ en:'Europe / USA / Canada',fr:'Europe / USA / Canada'},standard:{ en:'Free -- 5 to 14 days',fr:'Gratuite -- 5 a 14 jours'},express:{ en:'EUR 4.99 -- 3 to 7 days',fr:'4,99 EUR -- 3 a 7 jours'}},{zone:{ en:'International',fr:'International'},standard:{ en:'Free -- 7 to 15 days',fr:'Gratuite -- 7 a 15 jours'},express:{ en:'EUR 9.99 -- 5 to 12 days',fr:'9,99 EUR -- 5 a 12 jours'}}]
-export const SITE={name:'Fizzloo',tagline:{en:'Bath Time Magic',fr:'La Magie du Bain'},desc:{en:'Fizzing bath bombs with surprise toys inside',fr:'Des bombes de bain avec jouets surprises'},url: 'https://fizzloo.com',email:'contact@fizzloo.com',company:'Nexelium',siret:'939 980 132 00020',address:'29 Rue Tronchet, 75008 Paris, France'}
+
+// ============================================================
+// REVIEWS
+// ============================================================
+export const REVIEWS = [
+  {
+    name: 'Sophie M.',
+    location: 'Paris, France',
+    rating: 5,
+    date: 'March 12, 2025',
+    product: 'Pack Famille -- 12 Bombes',
+    verified: true,
+    text: {
+      en: 'My daughter absolutely loves them! She now asks to take a bath every evening. Best purchase of the year!',
+      fr: 'Ma fille les adore ! Elle reclame son bain tous les soirs maintenant. Meilleur achat de l\'annee !',
+    },
+  },
+  {
+    name: 'James T.',
+    location: 'London, UK',
+    rating: 5,
+    date: 'March 8, 2025',
+    product: 'Starter Pack -- 3 Bombs',
+    verified: true,
+    text: {
+      en: 'The kids go absolutely wild for these. The surprise toys are so cute and the bombs smell amazing!',
+      fr: 'Les enfants deviennent fous avec ca. Les jouets surprises sont adorables !',
+    },
+  },
+  {
+    name: 'Emma L.',
+    location: 'Montreal, Canada',
+    rating: 5,
+    date: 'Feb 28, 2025',
+    product: 'Luxury Box -- 24 Bombs',
+    verified: true,
+    text: {
+      en: 'Ordered 3 packs as birthday gifts -- every kid was thrilled! Beautiful packaging.',
+      fr: 'Commande 3 packs pour des anniversaires -- tous les enfants ont adore ! Emballage superbe.',
+    },
+  },
+  {
+    name: 'Marie-Claire D.',
+    location: 'Lyon, France',
+    rating: 5,
+    date: 'March 5, 2025',
+    product: 'Mega Pack -- 15 Bombes',
+    verified: true,
+    text: {
+      en: 'Finally something that makes bath time fun! My son now runs to the bathroom.',
+      fr: 'Enfin quelque chose qui rend le bain amusant ! Mon fils court maintenant vers la salle de bain.',
+    },
+  },
+  {
+    name: 'Lisa K.',
+    location: 'New York, USA',
+    rating: 5,
+    date: 'March 15, 2025',
+    product: 'Family Pack -- 12 Bombs',
+    verified: true,
+    text: {
+      en: 'Amazing quality, safe ingredients, kids love guessing what toy they will find. 10/10!',
+      fr: 'Qualite incroyable, ingredients surs, les enfants adorent deviner le jouet. 10/10 !',
+    },
+  },
+]
+
+// ============================================================
+// FAQ
+// ============================================================
+export const FAQ_ITEMS = [
+  {
+    q: { en: 'Are the bath bombs safe for children?', fr: 'Les bombes sont-elles sures pour les enfants ?' },
+    a: { en: 'Yes! All Fizzloo bombs are made with 100% natural and organic ingredients, free from parabens and sulfates. Safe for ages 3+.',
+         fr: 'Oui ! Toutes les bombes Fizzloo sont fabriquees avec des ingredients 100% naturels et biologiques. Sures des 3 ans.' },
+  },
+  {
+    q: { en: 'What surprise toys are inside?', fr: 'Quels jouets surprises sont a l\'interieur ?' },
+    a: { en: 'Each bomb contains a miniature toy -- animals, dinosaurs, sea creatures, mini figures and more! Every bomb is different.',
+         fr: 'Chaque bombe contient un mini jouet -- animaux, dinosaures, creatures marines, mini figurines et plus ! Chaque bombe est differente.' },
+  },
+  {
+    q: { en: 'How long does delivery take?', fr: 'Combien de temps prend la livraison ?' },
+    a: { en: 'Standard (free): 5-14 business days for Europe/USA/Canada. Express (EUR 4.99): 3-7 business days.',
+         fr: 'Standard (gratuite) : 5 a 14 jours ouvres pour Europe/USA/Canada. Express (4,99 EUR) : 3 a 7 jours ouvres.' },
+  },
+  {
+    q: { en: 'What is your return policy?', fr: 'Quelle est votre politique de retour ?' },
+    a: { en: 'We offer a 30-day satisfaction guarantee. Contact us for a full refund within 2-7 business days.',
+         fr: 'Nous offrons une garantie satisfaction de 30 jours. Remboursement sous 2 a 7 jours ouvres.' },
+  },
+  {
+    q: { en: 'Do the bombs stain the bathtub?', fr: 'Les bombes tachent-elles la baignoire ?' },
+    a: { en: 'No! Our natural colorants dissolve completely and do not stain bathtubs, skin, or towels.',
+         fr: 'Non ! Nos colorants naturels se dissolvent completement et ne tachent ni la baignoire, ni la peau, ni les serviettes.' },
+  },
+]
+
+// ============================================================
+// SHIPPING ZONES
+// ============================================================
+export const SHIPPING_ZONES = [
+  { zone: { en: 'Europe / USA / Canada', fr: 'Europe / USA / Canada' },
+    standard: { en: 'Free -- 5 to 14 days', fr: 'Gratuite -- 5 a 14 jours' },
+    express:  { en: 'EUR 4.99 -- 3 to 7 days', fr: '4,99 EUR -- 3 a 7 jours' } },
+  { zone: { en: 'International', fr: 'International' },
+    standard: { en: 'Free -- 7 to 15 days', fr: 'Gratuite -- 7 a 15 jours' },
+    express:  { en: 'EUR 9.99 -- 5 to 12 days', fr: '9,99 EUR -- 5 a 12 jours' } },
+]
+
+// ============================================================
+// SITE CONFIG
+// ============================================================
+export const SITE = {
+  name: 'Fizzloo',
+  tagline: { en: 'Bath Time Magic', fr: 'La Magie du Bain' },
+  desc: {
+    en: 'Fizzing bath bombs with surprise toys inside -- for kids who love bath time',
+    fr: 'Des bombes de bain avec jouets surprises -- pour les enfants qui adorent le bain',
+  },
+  url: 'https://fizzloo.com',
+  email: 'contact@fizzloo.com',
+  company: 'Nexelium',
+  siret: '939 980 132 00020',
+  address: '29 Rue Tronchet, 75008 Paris, France',
+}
