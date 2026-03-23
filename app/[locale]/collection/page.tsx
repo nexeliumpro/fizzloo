@@ -1,7 +1,9 @@
 import { type Locale, getT } from '@/lib/i18n'
 import { PRODUCTS } from '@/lib/config'
 import ProductCard from '@/components/ui/ProductCard'
+
 type Props = { params: { locale: Locale } }
+
 export default function CollectionPage({ params: { locale } }: Props) {
   const tr = getT(locale)
   return (
